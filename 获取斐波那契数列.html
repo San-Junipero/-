@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery-1.12.4.js"></script>
+
+</head>
+
+<body>
+
+</body>
+<script>
+    //递归求第 n位斐波那契数列
+    // function createFB() {
+    //     //创建一个对象保存求过的项
+    //     var obj = {};
+    //     function FB(n) {
+    //         //判断n项是否已经求过，如果已经求过，直接把值返回
+    //         if (obj[n] != undefined) {
+    //             return obj[n];
+    //         }
+    //         else {
+    //             //若果是第一项或第二项，返回1，并保存
+    //             if (n == 1 || n == 2) {
+    //                 obj[n] = 1;
+    //                 return 1;
+    //             }
+    //             else {
+    //                 obj[n] = FB(n - 1) + FB(n - 2);
+    //                 return obj[n];
+    //             }
+    //         }
+    //     }
+    //     return FB;
+    // }
+    // console.log(createFB()(5));
+    
+
+    //-----------------------------------------------------------------------
+
+    // 获取 n 以内的斐波那契数列
+    function getFB(n) {
+        function* fibo() {
+            let [prev, current] = [0, 1];
+            for (; ;) {
+                yield current;
+                [prev, current] = [current, prev + current];
+            }
+        }
+        for (let i of fibo()) {
+            if (i > n) {
+                break;
+            }
+            console.log(i);
+        }
+    }
+    getFB(10000);
+
+
+</script>
+
+</html>
